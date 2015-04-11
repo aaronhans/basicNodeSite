@@ -1,0 +1,102 @@
+<style type="text/css">
+.commentIcon {
+  width: 30px;
+  height:30px;
+  background-color:#a3aaad;
+  mask: url(/images/comment.svg) center / contain no-repeat;
+  -webkit-mask: url(/images/comment.svg) center / contain no-repeat;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.comments li {
+	clear:both;
+	margin:10px 0;
+	overflow: hidden;
+}
+.comments li .avatar {
+  width: 60px;
+  height: 60px;
+  float: left;
+  position:relative;
+}
+.comments li .avatar img {
+  width: 60px;
+  border-radius:5px;
+}
+.comments .commentBody {
+	margin:0;
+	float:left;
+	padding:3px;
+  vertical-align: top;
+  width: 440px;
+  margin: 0 0 0 20px;
+	background-color:#fff;
+	border-radius:10px;
+	padding:10px 20px;
+	z-index:3;
+	position:relative;
+}
+.commentCorner {
+	position: absolute;
+  top: -8px;
+  left: 70px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 0 0 0 13px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 1;
+}
+.comments .text {
+	vertical-align:top;
+	display: block;
+	margin: 20px 10px 10px 0;
+}
+.comments .reply {
+	position:absolute;
+	bottom:10px;right:10px;
+  background: #e3e6e6;
+  width: 20px;
+  height: 20px;
+  mask: url(/images/reply.svg) center / contain no-repeat;
+  -webkit-mask: url(/images/reply.svg) center / contain no-repeat;
+}
+.comments .commentBody.newComment {
+	border: none;
+  background-color: #e3e6e6;
+  margin: 30px 0 0 80px;
+  height: 60px;
+  font-size: 1rem;
+}
+.comments .meta .date {
+	padding: 0 0 0 10px;
+}
+</style>
+<span class="comments">
+	<h2><span class="commentIcon"></span> <%= comments.length %> Comments</h2>
+	<ul>
+		<% comments.forEach(function(comment) { %>
+			<% include comment %>
+		<% }) %>
+	</ul>
+	<form method="post" id="commentForm" action="/<%= params.owner %>/<%= params.id %>/comment" onSubmit="return false;">
+		<span class="avatar"><img src=""></span>
+		<input type="text" class="commentBody newComment" name="newComment" placeholder="Add a new comment">
+	</form>
+</span>
+
+<script type="text/javascript">
+document.getElementById('commentForm').addEventListener('submit',function(e) {
+	event.preventDefault();
+	var commentText = document.querySelector('.newComment').value;
+	if(commentText != '') {
+		document.querySelector('.newComment').value = '';
+		DIY.utils.ajaxPost(this.action,'comment='+commentText,function(response) {
+			console.log('received');
+			console.log(response);
+			document.querySelector('.comments ul').insertAdjacentHTML('beforeend',response);
+		})
+	}
+})
+</script>
