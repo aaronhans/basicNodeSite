@@ -1,0 +1,29 @@
+<% include includes/header %>
+<% project = data.project.response; %>
+
+<section class="projectInfo">
+	<div class="interior">
+		<img src="<%= project.clips[0].assets.ios_600.url %>" class="projectClip">
+		
+		<span class="details">
+			<h1><%= project.title %></h1>
+			<span class="date"><%= moment(project.stamp).format('MMM Do YYYY') %></span>
+
+			<span class="author">
+				<img src="<%= project.maker.avatar.icon.url %>" class="avatar author">
+				<a class="name" href="/<%= project.maker.url %>"><%= project.maker.nickname %></a>
+			</span>
+		</span>
+	</div>
+</section>
+
+<section class="social">
+	<div class="interior">
+		<% var comments = data.comments.response; %>
+		<% include includes/comment %>
+		<% var favorites = data.favorites.response; %>
+		<% include includes/favorites %>
+	</div>
+</section>
+
+<% include includes/footer %>

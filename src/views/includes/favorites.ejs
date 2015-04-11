@@ -1,0 +1,26 @@
+<style type="text/css">
+.favoritesIcon {
+  width: 30px;
+  height:30px;
+  background-color:#a3aaad;
+  mask: url(/images/favorite.svg) center / contain no-repeat;
+  -webkit-mask: url(/images/favorite.svg) center / contain no-repeat;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.favorites .makerLink {
+	vertical-align: top;
+  line-height: 30px;
+}
+</style>
+<span class="favorites">
+	<h2><span class="commentIcon"></span> <%= favorites.length %> Favorites</h2>
+	<ul>
+		<% favorites.forEach(function(favorite) { %>
+			<li>
+				<img class="avatar" src="<%= favorite.avatar.small.url %>">
+				<a href="/<%= favorite.url %>" class="makerLink"><%= favorite.nickname %></a>
+			</li>	
+		<% }) %>
+	</ul>
+</span>
