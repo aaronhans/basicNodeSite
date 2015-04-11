@@ -1,8 +1,6 @@
-# Sample Node.js site
+# Simple example of Node.js site
 
-- Frontend based on api.diy.org
+- Data pulled from open api provided by diy.org
 - Server side rendering with express
 - Uses clustering for stability
 - Functional tests with zombie
-
-
