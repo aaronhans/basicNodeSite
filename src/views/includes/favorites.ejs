@@ -1,8 +1,8 @@
 <style type="text/css">
 .favoritesIcon {
-  width: 30px;
-  height:30px;
-  background-color:#a3aaad;
+  width: 35px;
+  height:35px;
+  background-color:#c4cbcc;
   mask: url(/images/favorite.svg) center / contain no-repeat;
   -webkit-mask: url(/images/favorite.svg) center / contain no-repeat;
   vertical-align: bottom;
@@ -12,15 +12,33 @@
 	vertical-align: top;
   line-height: 30px;
 }
+.favorites ul {
+	width:150px;float:left;
+}
+.favorites .makerLink {
+	vertical-align: top;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  display: inline-block;	
+}
 </style>
 <span class="favorites">
 	<h2><span class="favoritesIcon"></span> <%= favorites.length %> Favorites</h2>
 	<ul>
-		<% favorites.forEach(function(favorite) { %>
+		<% for(var i = 0;i<favorites.length;i++) {
+			 var favorite = favorites[i]; // favorites.forEach(function(favorite) {
+			 %>
 			<li>
 				<img class="avatar" src="<%= favorite.avatar.small.url %>">
 				<a href="/<%= favorite.url %>" class="makerLink"><%= favorite.nickname %></a>
 			</li>	
-		<% }) %>
+		<% if(i == Math.ceil(favorites.length / 2)) { %>
+		</ul>
+		<ul>
+		<% } 
+		} %>
 	</ul>
 </span>

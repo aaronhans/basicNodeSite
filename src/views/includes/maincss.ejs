@@ -16,7 +16,7 @@
 	  -moz-box-sizing: border-box;
 	  box-sizing: border-box;
 	  font-family: ApexRounded,sans-serif;
-	  font-weight:400;
+	  font-weight:700;
 	  margin:0;padding:0;
 	  background-color:#f2f2f2;
 	  font-size:16px;
@@ -25,6 +25,7 @@
 	a {
 		text-decoration: none;
 		color:#2CA1DB;
+		font-weight: 400;
 	}
 	ul, li {
 		list-style:none;
@@ -43,7 +44,6 @@
 	}
 	h2 {
 	  font-size: 1.5rem;
-	  line-height: 1.5rem;
 	  margin:20px 0;
 	}
 	header {
@@ -65,15 +65,21 @@
 	}
 	.date {
 		color:#c4cbcc;
+		font-weight: 400;
 	}
 	.projectInfo {
 		background-color:#fff;
 		margin:0 auto;
 		padding:25px 0;
 	}
+	.projectPic {
+	  width: 600px;
+	  height: 400px;
+	  position:relative;
+	}
 	.projectClip {
 		width:600px;height:400px;
-		border-radius:10px;
+		border-radius:6px;
 	}
 	.details {
 		width:300px;
@@ -96,8 +102,21 @@
 	.details .author .name {
 		text-indent: 40px;
   	display: inherit;
-  	line-height: 28px;
+  	line-height: 26px;
   	font-size: 1.2rem;
+	}
+	.achievements li {
+		line-height: 100px;
+	}
+	.achievementTitle {
+		vertical-align: bottom;
+	  line-height: 60px;
+	  display: inline-block;
+	  margin: 0 10px;
+	}
+	.achievements .hexagon {
+		width:50px;
+		vertical-align: bottom;
 	}
 	.social .comments {
 		width:600px;

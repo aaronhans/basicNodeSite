@@ -8,6 +8,18 @@
 		<span class="details">
 			<h1><%= project.title %></h1>
 			<span class="date"><%= moment(project.stamp).format('MMM Do YYYY') %></span>
+			<ul class="achievements">
+				<% var achievements = data.achievements.response; %>
+				<% achievements.forEach(function(achievement) { 
+					if(achievement.project.id == project.id) {
+					%>
+					<li>
+						<img src="<%= achievement.skill.images.medium %>" class="hexagon">
+						<span class="achievementTitle"><%= achievement.skill.grammar.singular %></span>
+					</li>
+				<% }
+				}) %>
+			</ul>
 
 			<span class="author">
 				<img src="<%= project.maker.avatar.icon.url %>" class="avatar author">

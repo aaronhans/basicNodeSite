@@ -35,6 +35,18 @@ module.exports = function(req,res) {
           callback(null, b);
 			  }
 			});
+    },
+    achievements: function(callback) {
+			var url = req.app.locals.apiServer+'/makers/'+req.params.owner+'/achievements';
+			request(url,function(e,r,b) {
+				console.log(e)
+				console.log(b)
+			  if(e) {
+          callback(e, null);
+			  } else {
+          callback(null, b);
+			  }
+			});
     }
   },
   function(err, results) {
@@ -48,7 +60,8 @@ module.exports = function(req,res) {
 				data:{
 					project:JSON.parse(results['project']),
 					comments:JSON.parse(results['comments']),
-					favorites:JSON.parse(results['favorites'])
+					favorites:JSON.parse(results['favorites']),
+					achievements:JSON.parse(results['achievements'])
 				},
 				moment:moment
 			})
